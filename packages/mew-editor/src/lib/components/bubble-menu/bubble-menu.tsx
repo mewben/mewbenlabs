@@ -1,48 +1,21 @@
-import PropTypes from "prop-types";
-import cx from "clsx";
-import { Editor } from "@tiptap/core";
+import { Bold, Italic, Underline, Strike, Code, Highlight } from "../buttons";
+import { ButtonProps } from "../buttons/types";
 
-interface BubbleMenuProps {
-  editor: Editor;
-}
-
-const BubbleMenu = ({ editor }: BubbleMenuProps) => {
+const BubbleMenu = ({ editor }: ButtonProps) => {
   return (
     <div className="popup-wrapper">
       <div className="bubble-menu">
         <div className="bubble-menu_section">
-          <button
-            onClick={() => editor.chain().focus().toggleBold().run()}
-            className={cx("item", { active: editor.isActive("bold") })}
-          >
-            <strong>B</strong>
-          </button>
-          <button
-            onClick={() => editor.chain().focus().toggleItalic().run()}
-            className={cx("item", { active: editor.isActive("italic") })}
-          >
-            <em>i</em>
-          </button>
-          <button
-            onClick={() => editor.chain().focus().toggleUnderline().run()}
-            className={cx("item", { active: editor.isActive("underline") })}
-          >
-            <u>U</u>
-          </button>
-          <button
-            onClick={() => editor.chain().focus().toggleStrike().run()}
-            className={cx("item", { active: editor.isActive("strike") })}
-          >
-            <s>S</s>
-          </button>
+          <Bold editor={editor} />
+          <Italic editor={editor} />
+          <Underline editor={editor} />
+          <Strike editor={editor} />
+          <Code editor={editor} />
+          <Highlight editor={editor} />
         </div>
       </div>
     </div>
   );
-};
-
-BubbleMenu.propTypes = {
-  editor: PropTypes.object.isRequired,
 };
 
 export default BubbleMenu;

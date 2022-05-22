@@ -26,15 +26,18 @@ import TextAlign from "@tiptap/extension-text-align";
 import Typography from "@tiptap/extension-typography";
 // @ts-ignore
 import { lowlight } from "lowlight";
+import cx from "clsx";
 
 import TrailingNode from "./extensions/trailing-node";
 import { BubbleMenu as BubbleMenuContent } from "./components/bubble-menu";
 
 import "./style.css";
+import { Toolbar } from "./components/toolbar";
 
 export interface MewEditorProps {
   content?: any;
   onChange: Function;
+  mode?: "full" | "stripped";
   placeholder?: any;
   autofocus?: FocusPosition;
   characterLimit?: number;
@@ -43,6 +46,7 @@ export interface MewEditorProps {
 const Core = ({
   content,
   onChange,
+  mode = "full",
   placeholder = "Type / for commands...",
   autofocus = true,
   characterLimit,
@@ -103,19 +107,24 @@ const Core = ({
   if (!editor) return null;
 
   return (
-    <div className="editor-wrapper">
+    <div className={cx("editor", mode)}>
+      <div className="editor-header">
+        <Toolbar editor={editor} />
+      </div>
+      <EditorContent editor={editor} className="editor-content" />
+      <div className="editor-footer">
+        {!!characterLimit && (
+          <div className="character-count text-xs">
+            {editor.storage.characterCount.characters()}/{characterLimit}{" "}
+            characters
+            <br />
+            {editor.storage.characterCount.words()} words
+          </div>
+        )}
+      </div>
       <BubbleMenu editor={editor} tippyOptions={{ duration: 100 }}>
         <BubbleMenuContent editor={editor} />
       </BubbleMenu>
-      <EditorContent editor={editor} className="editor" />
-      {!!characterLimit && (
-        <div className="character-count text-xs">
-          {editor.storage.characterCount.characters()}/{characterLimit}{" "}
-          characters
-          <br />
-          {editor.storage.characterCount.words()} words
-        </div>
-      )}
     </div>
   );
 };
