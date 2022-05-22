@@ -1,48 +1,55 @@
 import { useState } from "react";
-import logo from "./logo.svg";
+import { MewEditor } from "./lib";
 import "./App.css";
 
-import { MewEditor } from "./lib";
+const App = () => {
+  const [content, setContent] = useState();
 
-function App() {
-  const [count, setCount] = useState(0);
+  const handleSave = async (updatedContent: any) => {
+    await new Promise((resolve) =>
+      setTimeout(() => {
+        setContent(updatedContent);
+        // setUpdatedAt(new Date());
+        resolve(0);
+      }, 0)
+    );
+  };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <MewEditor />
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates edit.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {" | "}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+    <div className="max-w-7xl mx-auto py-12 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto">
+        <div className="bg-white shadow sm:rounded-lg">
+          <div className="px-4 py-5 sm:px-6">
+            <h3 className="text-lg leading-6 font-medium text-blue-900">
+              MewEditor
+            </h3>
+            <p className="mt-1 max-w-2xl text-sm text-gray-500">
+              A notion-like rich text editor
+            </p>
+          </div>
+          <div className="border-t border-gray-200 ">
+            <div className="px-40 py-5">
+              <MewEditor
+                onChange={handleSave}
+                content={content}
+                characterLimit={1000}
+              />
+              {/* <Editor
+                  id="2a1"
+                  blocks={blocks2}
+                  onChange={handleSave2}
+                  autoFocus
+                /> */}
+              <hr />
+              <pre className="bg-gray-200 text-xs font-mono rounded-sm p-1 mt-8">
+                {JSON.stringify(content, null, " ")}
+              </pre>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
