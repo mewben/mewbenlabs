@@ -1,0 +1,14 @@
+{
+  "name": "mewbenlabs",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Melvin Soldia",
+  "license": "MIT",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "demo/*"
+    ]
+  }
+}
