@@ -108,9 +108,11 @@ const Core = ({
 
   return (
     <div className={cx("editor", mode)}>
-      <div className="editor-header">
-        <Toolbar editor={editor} />
-      </div>
+      {mode === "full" && (
+        <div className="editor-header">
+          <Toolbar editor={editor} />
+        </div>
+      )}
       <EditorContent editor={editor} className="editor-content" />
       <div className="editor-footer">
         {!!characterLimit && (
@@ -122,9 +124,11 @@ const Core = ({
           </div>
         )}
       </div>
-      <BubbleMenu editor={editor} tippyOptions={{ duration: 100 }}>
-        <BubbleMenuContent editor={editor} />
-      </BubbleMenu>
+      {mode === "stripped" && (
+        <BubbleMenu editor={editor} tippyOptions={{ duration: 100 }}>
+          <BubbleMenuContent editor={editor} />
+        </BubbleMenu>
+      )}
     </div>
   );
 };

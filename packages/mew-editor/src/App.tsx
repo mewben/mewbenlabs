@@ -28,11 +28,17 @@ const App = () => {
             </p>
           </div>
           <div className="border-t border-gray-200 ">
-            <div className="px-40 py-5">
+            <div className="px-40 py-5 space-y-4">
               <MewEditor
                 onChange={handleSave}
                 content={content}
                 characterLimit={1000}
+              />
+              <hr />
+              <MewEditor
+                onChange={handleSave}
+                content={content}
+                mode="stripped"
               />
               {/* <Editor
                   id="2a1"

@@ -4,14 +4,14 @@
 
 .editor.full {
   @apply border-2 border-gray-900 rounded-lg;
-}
 
-.editor-header {
-  @apply border-b-2 border-gray-900;
-}
+  & > .editor-header {
+    @apply border-b-2 border-gray-900;
+  }
 
-.editor-footer {
-  @apply border-t-2 border-gray-900 px-4 py-1 text-xs text-gray-500;
+  & > .editor-footer {
+    @apply border-t-2 border-gray-900 px-4 py-1 text-xs text-gray-500;
+  }
 }
 
 .editor-content {
@@ -111,18 +111,14 @@
 
 .bubble-menu {
   @apply flex items-stretch divide-x divide-gray-200 leading-none h-8 overflow-x-auto max-w-sm;
-
-  & > .bubble-menu_section {
-    @apply flex px-2;
-  }
 }
 
 .toolbar {
   @apply flex items-stretch divide-x divide-gray-300 leading-none h-10 overflow-x-auto;
+}
 
-  & > .toolbar-section {
-    @apply flex px-2;
-  }
+.tools-section {
+  @apply flex px-2;
 }
 
 /* code highlight lowlight */
