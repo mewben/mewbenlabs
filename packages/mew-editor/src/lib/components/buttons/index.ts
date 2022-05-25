@@ -13,3 +13,4 @@ export { AlignLeft, AlignCenter, AlignRight, AlignJustify } from "./text-align";
 export { Hr } from "./hr";
 export { Subscript, Superscript } from "./subsupscript";
 export { Undo, Redo } from "./undo-redo";
+export { ClearFormat } from "./clear-format";

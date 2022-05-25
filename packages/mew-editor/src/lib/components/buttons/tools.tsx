@@ -21,6 +21,7 @@ import {
   Hr,
   Undo,
   Redo,
+  ClearFormat,
 } from ".";
 import { ButtonProps } from "./types";
 
@@ -48,6 +49,7 @@ const Tools = ({ editor }: ButtonProps) => {
       <div className="tools-section">
         <Blockquote editor={editor} />
         <Hr editor={editor} />
+        <ClearFormat editor={editor} />
       </div>
       <div className="tools-section">
         <AlignLeft editor={editor} />

@@ -24,7 +24,7 @@ const App = () => {
               MewEditor
             </h3>
             <p className="mt-1 max-w-2xl text-sm text-gray-500">
-              A notion-like rich text editor
+              A notion-like rich text editor{" "}
             </p>
           </div>
           <div className="border-t border-gray-200 ">
